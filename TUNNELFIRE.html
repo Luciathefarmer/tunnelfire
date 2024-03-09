@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TUNNELFIRE Gathering - Bestellung</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            text-align: center;
+            background-color: #fde2e4;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #e44d26;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .drink-button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .drink-image {
+            max-width: 100px;
+            margin-top: 10px;
+        }
+
+        #total-amount {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e44d26;
+        }
+
+        #paypal-link {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e44d26;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>🔥 TUNNELFIRE Gathering - Bestellung</h1>
+
+        <button class="drink-button" onclick="addToCart('Shuttle', 2.00)">
+            🚐 Shuttle - 2,00€
+            <img class="drink-image" src="https://www.steinfiguren.net/media/image/3d/80/f4/Rost_vw-bulli-Dekowelt.jpg" alt="Shuttle Image">
+        </button>
+
+        <button class="drink-button" onclick="addToCart('Spezi', 1.50)">
+            🥤 Spezi - 1,50€
+            <img class="drink-image" src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTcsUf_IlEpBZr1erk6ijMgXCAJCRht9PU2IX9RVOBatPIParZXlNORKsA__GjuobHFZiGQ168Gw81qRJ6zsi0GGtqrRQxxbnmTUAcmWSNKW2GWMPtJs1PQXQ" alt="Spezi Image">
+        </button>
+
+        <button class="drink-button" onclick="addToCart('Shots', 1.00)">
+            🥃 Shots - 1,00€
+            <img class="drink-image" src="https://www.thespruceeats.com/thmb/y2q4vjr71ZEG6cENe-SYuZsdeNc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/liquid-cocaine-and-firecracker-shots-759724-hero-01-2b7f200496f246deb8e4dc2b05c89a06.jpg" alt="Shots Image">
+        </button>
+
+        <button class="drink-button" onclick="addToCart('FreiwilligerEintritt', 5.00)">
+            🎉 Freiwilliger Eintritt (Shuttle inklusive) - 5,00€
+            <img class="drink-image" src="https://fsj.erzbistum.hamburg/wp-content/uploads/sites/27/2021/01/Fahrkarte_800x800.png" alt="Freiwilliger Eintritt Image">
+        </button>
+
+        <p id="total-amount">Gesamtbetrag: 0,00€</p>
+
+        <a id="paypal-link" href="https://www.paypal.me/LucaWiebe" target="_blank">Jetzt bezahlen mit PayPal</a>
+    </div>
+
+
+<script>
+    var cart = {};
+
+    function addToCart(product, price) {
+        if (cart[product]) {
+            cart[product].quantity++;
+        } else {
+            cart[product] = {
+                price: price,
+                quantity: 1
+            };
+        }
+
+        updateTotalAmount();
+    }
+
+    function updateTotalAmount() {
+        var totalAmount = 0;
+
+        for (var product in cart) {
+            totalAmount += cart[product].price * cart[product].quantity;
+        }
+
+        document.getElementById('total-amount').textContent = 'Gesamtbetrag: ' + totalAmount.toFixed(2) + '€';
+    }
+</script>
+
+
